@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_layout/model/tourism_place.dart';
 
 class DetailScreen extends StatelessWidget {
-  const DetailScreen({Key? key}) : super(key: key);
+  const DetailScreen({Key? key, required this.place}) : super(key: key);
 
+  final TourismPlace place;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,11 +12,11 @@ class DetailScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Image.asset('assets/images/01pancer.jpg'),
+            Image.asset(place.imageAsset),
             Container(
               margin: EdgeInsets.only(top: 16.0),
               child: Text(
-                "Pancer Door Beach",
+                place.name,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 30.0,
@@ -31,19 +33,19 @@ class DetailScreen extends StatelessWidget {
                   Column(
                     children: [
                       Icon(Icons.calendar_today),
-                      Text("Open Everyday"),
+                      Text(place.openDay),
                     ],
                   ),
                   Column(
                     children: [
                       Icon(Icons.access_time),
-                      Text("07.00 - 17.00"),
+                      Text(place.openHour),
                     ],
                   ),
                   Column(
                     children: [
                       Icon(Icons.attach_money),
-                      Text("IDR 10.000"),
+                      Text(place.price),
                     ],
                   ),
                 ],
@@ -51,8 +53,8 @@ class DetailScreen extends StatelessWidget {
             ),
             Container(
               padding: const EdgeInsets.all(16.0),
-              child: const Text(
-                "Pancer Door Beach is one series of Teleng Ria Beach, sea wave’s Pancer Door Beach is larger than Teleng Ria Beach. Great surf is often utilized by surfers to show his ability to attack the current high waves.",
+              child: Text(
+                place.description,
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 16.0),
               ),
@@ -66,28 +68,21 @@ class DetailScreen extends StatelessWidget {
                     padding: const EdgeInsets.all(4.0),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(30.0),
-                      child: Image.asset('assets/images/04pancer.jpg'),
+                      child: Image.asset(place.imgSlider1),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(4.0),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(30.0),
-                      child: Image.asset('assets/images/01pancer.jpg'),
+                      child: Image.asset(place.imgSlider2),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(4.0),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(30.0),
-                      child: Image.asset('assets/images/02pancer.jpg'),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(30.0),
-                      child: Image.asset('assets/images/03pancer.jpg'),
+                      child: Image.asset(place.imgSlider3),
                     ),
                   ),
                 ],

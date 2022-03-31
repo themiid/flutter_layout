@@ -1,66 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_layout/detailscreen.dart';
-import 'package:flutter_layout/model/tourism_place.dart';
+import 'package:flutter_layout/done_tourism_list.dart';
+import 'package:flutter_layout/tourism_list.dart';
 
-class MainScreen extends StatelessWidget {
-  const MainScreen({Key? key}) : super(key: key);
+class MainScreen extends StatefulWidget {
+  MainScreen({Key? key}) : super(key: key);
+  @override
+  _MainScreenState createState() => _MainScreenState();
+}
 
+class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:Text('Pacitan Tourism Place'),
+        title: Text('Pacitan Tourism Place'),
         backgroundColor: Color(0xFF182C61),
-      ),
-      body: ListView.builder(
-        itemBuilder: (context, index) {
-          final TourismPlace place = tourismPlaceList[index];
-          return InkWell(
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return DetailScreen(place: place);
-              }));
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.done_outline),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) {
+                  return const DoneTourismList();
+                }),);
             },
-            child: listItem(place),
-          );
-        },
-        itemCount: tourismPlaceList.length,
+          )
+        ],
       ),
+      body: TourismList(),
     );
   }
-}
-
-Widget listItem(TourismPlace place) {
-  return Card(
-    child: Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Expanded(
-          flex: 1,
-          child: Image.asset(place.imageAsset),
-        ),
-        Expanded(
-          flex: 2,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Text(
-                  place.name,
-                  style: TextStyle(fontSize: 18.0)
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Text(place.location,
-                style: TextStyle(fontSize: 15.0),),
-              ],
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
 }

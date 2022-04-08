@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_layout/model/tourism_place.dart';
+import 'package:flutter_layout/data/model/tourism_place.dart';
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({Key? key, required this.place}) : super(key: key);
@@ -12,7 +12,7 @@ class DetailScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Image.asset(place.imageAsset),
+            Image.network(place.imageAsset),
             Container(
               margin: EdgeInsets.only(top: 16.0),
               child: Text(
@@ -68,21 +68,21 @@ class DetailScreen extends StatelessWidget {
                     padding: const EdgeInsets.all(4.0),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(30.0),
-                      child: Image.asset(place.imgSlider1),
+                      child: Image.network(place.imgSlider1),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(4.0),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(30.0),
-                      child: Image.asset(place.imgSlider2),
+                      child: Image.network(place.imgSlider2),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(4.0),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(30.0),
-                      child: Image.asset(place.imgSlider3),
+                      child: Image.network(place.imgSlider3),
                     ),
                   ),
                 ],

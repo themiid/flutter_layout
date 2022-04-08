@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '/provider/done_tourism_provider.dart';
-import 'model/tourism_place.dart';
+import 'data/model/tourism_place.dart';
 
 class DoneTourismList extends StatelessWidget {
   const DoneTourismList({Key? key}) : super(key: key);
@@ -30,7 +30,7 @@ class DoneTourismList extends StatelessWidget {
                 children: <Widget>[
           Expanded(
             flex: 1,
-            child: Image.asset(place.imageAsset),
+            child: Image.network(place.imageAsset),
           ),
           Expanded(
             flex: 2,

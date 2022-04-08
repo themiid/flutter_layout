@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'model/tourism_place.dart';
+import 'data/model/tourism_place.dart';
 
 class ListItem extends StatelessWidget{
   final TourismPlace place;
@@ -21,7 +21,7 @@ class ListItem extends StatelessWidget{
         children: <Widget>[
           Expanded(
             flex: 1,
-            child: Image.asset(place.imageAsset),
+            child: Image.network(place.imageAsset),
           ),
           Expanded(
             flex: 2,
